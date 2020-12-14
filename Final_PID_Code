@@ -35,8 +35,8 @@
 // PID parameters
 #define _KP 5.2  // [2635] P 이득 비율(?)
 #define _KI 0.2   // [2635] I 이득 비율
-#define _KD 280.0 // [2635] D 이득 비율
-#define _ITERM_MAX 10
+#define _KD 290.0 // [2635] D 이득 비율
+#define _ITERM_MAX 15
 
 
 //////////////////////
@@ -125,7 +125,7 @@ void loop() {
         // get a distance reading from the distance sensor
         dist_raw = ir_distance_filtered(); // [2635] 센서 값 받아와서 변수에 저장
         dist_ema = _DIST_ALPHA * dist_raw + (1 - _DIST_ALPHA) * dist_ema;
-        if(dist_ema > prev_ema - 10 && dist_ema < prev_ema + 10){
+        if(dist_ema > prev_ema - 8 && dist_ema < prev_ema + 8){
           if(stack > 300){
             dist_ema = prev_ema;
           }
